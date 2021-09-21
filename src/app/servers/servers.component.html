@@ -10,6 +10,15 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
+    
+    <a routerLink="/servers">Reload Page</a> <!-- absolute path: localhost:4200/servers -->
+
+    <!-- <a routerLink="servers">Reload Page</a> 
+      relative path. Gives currentpath (localhost:4200/servers/servers)-->
+
+    <!-- <a routerLink="../servers">Reload Page</a>  
+      go back of 1 page, before adding /servers-->
+
     <app-edit-server></app-edit-server>
     <hr>
     <app-server></app-server>
