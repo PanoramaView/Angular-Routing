@@ -10,8 +10,10 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    
-    <a routerLink="/servers">Reload Page</a> <!-- absolute path: localhost:4200/servers -->
+
+    <button class="btn btn-primary" (click)="onReload()"> Reload Page </button>
+
+    <!-- <a routerLink="/servers">Reload Page</a> absolute path: localhost:4200/servers -->
 
     <!-- <a routerLink="servers">Reload Page</a> 
       relative path. Gives currentpath (localhost:4200/servers/servers)-->
