@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
@@ -13,7 +14,12 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, children: [
       { path: ':id/:name', component: UserComponent }, //urlpath with /{slug}
     ] },
-    { path: 'servers', component: ServersComponent, children: [ //nesting
+    //nesting. note: AuthGuard e AuthService needs to be added to the providers in app.module
+    { path: 'servers', 
+    //canActivate: [AuthGuard], // all the servers and its childs
+    canActivateChild: [AuthGuard], //protects the childs only
+    component: ServersComponent, 
+    children: [ 
       { path: ':id', component: ServerComponent }, // load a single server
       { path: ':id/edit', component: EditServerComponent },
     ] },

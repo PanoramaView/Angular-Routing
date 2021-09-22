@@ -14,6 +14,8 @@ import { ServersService } from './servers/servers.service';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 
 
@@ -34,7 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule
     /* RouterModule.forRoot(appRoutes) // with this Angular knows our routes. Moved to app-routing.module */
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
