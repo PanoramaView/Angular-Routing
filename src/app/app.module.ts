@@ -12,6 +12,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }, // localhost:4200/users
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     { path: ':id', component: ServerComponent }, // load a single server
     { path: ':id/edit', component: EditServerComponent },
   ] },
-
+  { path: 'not-found', component: PageNotFoundComponent }, //wildcard url
+  { path: '**', redirectTo: '/not-found'} // catch all not existing paths to redirect to not-found
 ]
 
 @NgModule({
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
