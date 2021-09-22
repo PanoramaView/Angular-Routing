@@ -18,6 +18,8 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'users/:id/:name', component: UserComponent }, //urlpath with /{slug}
   { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id', component: ServerComponent }, // load a single server
+  { path: 'servers/:id/edit', component: EditServerComponent },
 
 ]
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { ServersService } from '../servers.service';
 
@@ -10,10 +11,19 @@ import { ServersService } from '../servers.service';
 export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
 
-  constructor(private serversService: ServersService) { }
+  constructor(private serversService: ServersService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.server = this.serversService.getServer(1);
+    const id = +this.route.snapshot.params['id']; //get id from ActivatedRoute
+    this.server = this.serversService.getServer(id); // use the id to get the server
+    
+    this.route.params //to react to any changes, subscribe to your params
+      .subscribe(
+        (params: Params) => { //get the params
+          this.server = this.serversService.getServer(+params['id']); //get new server on the same page
+        }
+      );
   }
 
 }

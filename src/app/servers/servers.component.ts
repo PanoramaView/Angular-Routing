@@ -18,8 +18,8 @@ export class ServersComponent implements OnInit {
     this.servers = this.serversService.getServers();
   }
   onReload(){
-    // this.router.navigate(['servers']) //navigate sounds know where is the current path
-    this.router.navigate(['servers'], {relativeTo: this.route})
+    // this.router.navigate(['servers']) //navigate doesn't know where is the current path
+    this.router.navigate(['/servers'], {relativeTo: this.route})
   }
 
 }

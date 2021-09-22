@@ -13,8 +13,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLoadServer(){
+  onLoadServer(id: number){
     //before the going to the link [ calculations here ]
-    this.router.navigate(['/servers']); //we are able to trigger the link in our code.
+    this.router.navigate(['/servers', id, 'edit'], 
+    {queryParams: {allowEdit: '1'}, fragment: 'loading'}); //we are able to trigger the link in our code.
   }
 }
