@@ -11,21 +11,11 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent }, // localhost:4200/users
-  { path: 'users', component: UsersComponent, children: [
-    { path: ':id/:name', component: UserComponent }, //urlpath with /{slug}
-  ] },
-  { path: 'servers', component: ServersComponent, children: [ //nesting
-    { path: ':id', component: ServerComponent }, // load a single server
-    { path: ':id/edit', component: EditServerComponent },
-  ] },
-  { path: 'not-found', component: PageNotFoundComponent }, //wildcard url
-  { path: '**', redirectTo: '/not-found'} // catch all not existing paths to redirect to not-found
-]
+
 
 @NgModule({
   declarations: [
@@ -41,7 +31,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes) // with this Angular knows our routes
+    AppRoutingModule
+    /* RouterModule.forRoot(appRoutes) // with this Angular knows our routes. Moved to app-routing.module */
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
