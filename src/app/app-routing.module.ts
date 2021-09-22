@@ -9,6 +9,7 @@ import { ServersComponent } from './servers/servers.component';
 import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users.component';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service'
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent }, // localhost:4200/users
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
           canDeactivate: [CanDeactivateGuard] //Angular will run this guard when we try to leave this path here 
         },
     ] },
-    { path: 'not-found', component: PageNotFoundComponent }, //wildcard url
+    //{ path: 'not-found', component: PageNotFoundComponent }, //wildcard url
+    { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!'} }, //
     { path: '**', redirectTo: '/not-found'} // catch all not existing paths to redirect to not-found
   ]
 
