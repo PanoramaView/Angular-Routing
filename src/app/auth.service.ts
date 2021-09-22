@@ -10,7 +10,7 @@ export class AuthService {
                 // after 800ms it provides a promise(a boolean)
                 setTimeout(() =>{
                     resolve(this.loggedIn);
-                }, 800);
+                }, 500);
             }
         );
         return promise;

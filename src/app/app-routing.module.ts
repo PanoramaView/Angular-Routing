@@ -8,6 +8,7 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users.component';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service'
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent }, // localhost:4200/users
@@ -21,7 +22,11 @@ const appRoutes: Routes = [
     component: ServersComponent, 
     children: [ 
       { path: ':id', component: ServerComponent }, // load a single server
-      { path: ':id/edit', component: EditServerComponent },
+      { 
+          path: ':id/edit', 
+          component: EditServerComponent, 
+          canDeactivate: [CanDeactivateGuard] //Angular will run this guard when we try to leave this path here 
+        },
     ] },
     { path: 'not-found', component: PageNotFoundComponent }, //wildcard url
     { path: '**', redirectTo: '/not-found'} // catch all not existing paths to redirect to not-found
