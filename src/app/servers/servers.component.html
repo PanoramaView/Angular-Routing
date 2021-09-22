@@ -15,6 +15,7 @@
   </div>
   <div class="col-xs-12 col-sm-4">
 
+    <router-outlet></router-outlet> <!-- to be able to work with nested routes-->
     <button class="btn btn-primary" (click)="onReload()"> Reload Page </button>
 
     <!-- <a routerLink="/servers">Reload Page</a> absolute path: localhost:4200/servers -->
@@ -25,9 +26,9 @@
     <!-- <a routerLink="../servers">Reload Page</a>  
       go back of 1 page, before adding /servers-->
 
-    <app-edit-server></app-edit-server>
+    <!-- <app-edit-server></app-edit-server>
     <hr>
-    <!-- <app-server></app-server> -->
+    <app-server></app-server> -->
   </div>
 </div>
 
